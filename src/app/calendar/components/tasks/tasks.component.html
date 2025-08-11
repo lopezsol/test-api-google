@@ -1,0 +1,20 @@
+<h2>Tareas</h2>
+<ul>
+  @for (task of tasks(); track $index){
+  <li
+    [class.bg-blue]="task.taskType === 'mine'"
+    [class.bg-green]="task.taskType === 'holiday'"
+    [class.bg-violet]="task.taskType === 'other'"
+  >
+    {{ task.title }}
+    -
+    {{ task.status }}
+
+    -
+    {{ task.notes }}
+    -
+    {{ task.due }}
+  </li>
+
+  }
+</ul>
