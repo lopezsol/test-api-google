@@ -1,9 +1,10 @@
 import { Component, computed, signal } from '@angular/core';
 import { CalendarComponent } from "../../../calendar/components/calendar/calendar.component";
+import { TasksComponent } from "../../../calendar/components/tasks/tasks.component";
 
 @Component({
   selector: 'home-page',
-  imports: [CalendarComponent],
+  imports: [CalendarComponent, TasksComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })

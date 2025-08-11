@@ -82,6 +82,69 @@ export class CalendarComponent {
   //   }
   // }
 
+  // ---este si anda-----
+
+  // events = signal<any[]>([]);
+  // userEmail = signal<string>('mobyappacademy@gmail.com');
+
+  // async ngOnInit() {
+  //   try {
+  //     const accessToken = sessionStorage.getItem('access_token');
+  //     if (!accessToken) throw new Error('No hay token de acceso');
+
+  //     // Obtener lista de calendarios
+  //     const calendarListResponse = await fetch(
+  //       'https://www.googleapis.com/calendar/v3/users/me/calendarList',
+  //       {
+  //         headers: { Authorization: `Bearer ${accessToken}` },
+  //       }
+  //     );
+  //     const calendarList = await calendarListResponse.json();
+  //     console.log('Calendarios:', calendarList.items);
+
+  //     const allEvents: any[] = [];
+
+  //     // Recorrer todos los calendarios y obtener eventos
+  //     for (const calendar of calendarList.items) {
+  //       const eventsResponse = await fetch(
+  //         `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(
+  //           calendar.id
+  //         )}/events`,
+  //         {
+  //           headers: { Authorization: `Bearer ${accessToken}` },
+  //         }
+  //       );
+
+  //       const eventsData = await eventsResponse.json();
+  //       console.log(`Eventos de ${calendar.summary}:`, eventsData.items);
+
+  //       // Agregar los eventos a la lista total, junto con info del calendario
+  //       allEvents.push(
+  //         ...eventsData.items.map((event: any) => ({
+  //           ...event,
+  //           calendarSummary: calendar.summary,
+  //           calendarId: calendar.id,
+  //           eventType: this.getEventType(event),
+  //         }))
+  //       );
+  //     }
+
+  //     this.events.set(allEvents);
+  //   } catch (e) {
+  //     console.error('Error cargando calendarios y eventos:', e);
+  //   }
+  // }
+
+  // getEventType(event: any): 'mine' | 'other' | 'holiday' {
+  //   const myEmail = this.userEmail();
+  //   const creatorEmail = event.creator?.email || '';
+
+  //   if (creatorEmail === myEmail) return 'mine';
+  //   if (creatorEmail.endsWith('@group.v.calendar.google.com')) return 'holiday';
+  //   return 'other';
+  // }
+
+  // -----tareas-----
   events = signal<any[]>([]);
   userEmail = signal<string>('mobyappacademy@gmail.com');
 
@@ -98,11 +161,13 @@ export class CalendarComponent {
         }
       );
       const calendarList = await calendarListResponse.json();
-      console.log('Calendarios:', calendarList.items);
+
+      console.log('=== Lista de calendarios ===');
+      calendarList.items.forEach((c:any) => console.log(c.id, '-', c.summary));
 
       const allEvents: any[] = [];
 
-      // Recorrer todos los calendarios y obtener eventos
+      // Recorrer todos los calendarios y obtener eventos (incluye tareas)
       for (const calendar of calendarList.items) {
         const eventsResponse = await fetch(
           `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(
@@ -116,13 +181,12 @@ export class CalendarComponent {
         const eventsData = await eventsResponse.json();
         console.log(`Eventos de ${calendar.summary}:`, eventsData.items);
 
-        // Agregar los eventos a la lista total, junto con info del calendario
         allEvents.push(
           ...eventsData.items.map((event: any) => ({
             ...event,
             calendarSummary: calendar.summary,
             calendarId: calendar.id,
-            eventType: this.getEventType(event), 
+            eventType: this.getEventType(event, calendar.id),
           }))
         );
       }
@@ -133,10 +197,16 @@ export class CalendarComponent {
     }
   }
 
-  getEventType(event: any): 'mine' | 'other' | 'holiday' {
+  getEventType(
+    event: any,
+    calendarId: string
+  ): 'mine' | 'other' | 'holiday' | 'task' {
     const myEmail = this.userEmail();
     const creatorEmail = event.creator?.email || '';
 
+    // Identificar tareas por el ID del calendario
+    if (calendarId.endsWith('#tasks@group.v.calendar.google.com'))
+      return 'task';
     if (creatorEmail === myEmail) return 'mine';
     if (creatorEmail.endsWith('@group.v.calendar.google.com')) return 'holiday';
     return 'other';

@@ -41,7 +41,9 @@ export class LoginPageComponent {
   initializeGoogleSignInButton() {
     const tokenClient = google.accounts.oauth2.initTokenClient({
       client_id: clientId,
-      scope: 'https://www.googleapis.com/auth/calendar.readonly',
+      scope:
+        'https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/tasks.readonly',
+
       callback: (tokenResponse: any) => this.handleAccessToken(tokenResponse),
     });
 
@@ -59,7 +61,6 @@ export class LoginPageComponent {
       this.router.navigateByUrl('/home');
     }
   }
-
 
   // --------
   // initializeGoogleSignInButton() {
