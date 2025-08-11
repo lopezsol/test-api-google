@@ -42,8 +42,7 @@ export class LoginPageComponent {
     const tokenClient = google.accounts.oauth2.initTokenClient({
       client_id: clientId,
       scope:
-        'https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/tasks.readonly',
-
+        'https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/tasks.readonly https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/drive.file',
       callback: (tokenResponse: any) => this.handleAccessToken(tokenResponse),
     });
 
