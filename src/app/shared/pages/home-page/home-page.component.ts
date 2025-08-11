@@ -13,6 +13,9 @@ export class HomePageComponent {
   // token = signal<string>(sessionStorage.getItem('token')!);
   // token = signal<string>(sessionStorage.getItem('access_token')!);
 
+  user = signal<any>(JSON.parse(sessionStorage.getItem('user') || '{}')!);
+
+
   // user = computed(() => this.decodeJwtPayload(this.token()));
 
   // decodeJwtPayload(token: string): any {
