@@ -1,6 +1,6 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { map, Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 export interface CalendarEventsResponse {
@@ -22,8 +22,6 @@ export class GoogleCalendarService {
     const apiUrl = `${baseUrl}/auth/calendar/events/${encodeURIComponent(
       userEmail
     )}`;
-    return this.http
-      .get<CalendarEventsResponse>(apiUrl)
-      .pipe(tap((resp) => console.log('tap:', resp)));
+    return this.http.get<CalendarEventsResponse>(apiUrl);
   }
 }

@@ -16,9 +16,7 @@ export class HomePageComponent {
 
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
-      console.log(params);
       const userEmail = params['user_email'];
-      console.log('user_email', userEmail)
       if (userEmail) {
         sessionStorage.setItem('user_email', userEmail);
         this.router.navigate(['/home'], { replaceUrl: true });
