@@ -1,8 +1,11 @@
+import { AuthService } from './../../services/auth.service';
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
-declare var google: any;
+import { ActivatedRoute } from '@angular/router';
+
 const clientId = environment.googleClientId;
+const redirectUri = environment.redirectUriLogin;
 
 @Component({
   selector: 'app-login-page',
@@ -12,110 +15,34 @@ const clientId = environment.googleClientId;
 })
 export class LoginPageComponent {
   router = inject(Router);
+  authService = inject(AuthService);
+  route = inject(ActivatedRoute);
 
-  ngAfterViewInit() {
-    this.initializeGoogleSignInButton();
+  scope = encodeURIComponent(
+    'openid email profile ' +
+      'https://www.googleapis.com/auth/calendar.readonly ' +
+      'https://www.googleapis.com/auth/tasks.readonly ' +
+      'https://www.googleapis.com/auth/drive.readonly ' +
+      'https://www.googleapis.com/auth/drive.file'
+  );
+  responseType = 'code';
+  accessType = 'offline'; // para pedir refresh token
+  includeGrantedScopes = 'true';
+  //TODO: cambiar el state por uno real del backend
+  state = 'someCsrfTokenOrRandomString'; // recomendable para seguridad
+
+  loginWithGoogleOAuth() {
+    const oauth2Url =
+      `https://accounts.google.com/o/oauth2/v2/auth` +
+      `?client_id=${clientId}` +
+      `&redirect_uri=${encodeURIComponent(redirectUri)}` +
+      `&response_type=${this.responseType}` +
+      `&scope=${this.scope}` +
+      `&access_type=${this.accessType}` +
+      `&include_granted_scopes=${this.includeGrantedScopes}` +
+      `&state=${this.state}`;
+
+    window.location.href = oauth2Url;
   }
 
-  initializeGoogleSignInButton() {
-    google.accounts.id.initialize({
-      client_id: clientId,
-      callback: (response: any) => this.handleCredentialResponse(response),
-    });
-    google.accounts.id.renderButton(document.getElementById('buttonDiv'), {
-      theme: 'outline',
-      size: 'large',
-    });
-    google.accounts.id.prompt();
-  }
-
-  // handleCredentialResponse(response: any) {
-  //   console.log('Encoded JWT ID token: ' + response.credential);
-  //   if (response.credential) {
-  //     sessionStorage.setItem('token', response.credential);
-  //     this.router.navigateByUrl('/home');
-  //   }
-  // }
-
-  handleCredentialResponse(response: any) {
-    console.log('Encoded JWT ID token: ' + response.credential);
-
-    if (response.credential) {
-      fetch(`https://364cf57e763b.ngrok-free.app/api/auth/google`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token: response.credential }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.success) {
-            // Guardar solo lo necesario
-            sessionStorage.setItem('user', JSON.stringify(data.user));
-
-            // Si tu backend devuelve un token interno, también lo guardás
-            // sessionStorage.setItem('auth_token', data.token);
-
-            this.router.navigateByUrl('/home');
-          } else {
-            console.error('Error de autenticación:', data.message);
-          }
-        })
-        .catch((err) => console.error('Error en login:', err));
-    }
-  }
-
-  // --------
-  // esto si anda
-  // initializeGoogleSignInButton() {
-  //   const tokenClient = google.accounts.oauth2.initTokenClient({
-  //     client_id: clientId,
-  //     scope:
-  //       'https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/tasks.readonly https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/drive.file',
-  //     callback: (tokenResponse: any) => this.handleAccessToken(tokenResponse),
-  //   });
-
-  //   // Mostrar el botón manualmente o hacer auto-login
-  //   document.getElementById('buttonDiv')?.addEventListener('click', () => {
-  //     tokenClient.requestAccessToken();
-  //   });
-  // }
-
-  // handleAccessToken(tokenResponse: any) {
-  //   console.log('tokenResponse', tokenResponse);
-  //   console.log('Access token: ', tokenResponse.access_token);
-  //   if (tokenResponse.access_token) {
-  //     sessionStorage.setItem('access_token', tokenResponse.access_token);
-  //     this.router.navigateByUrl('/home');
-  //   }
-  // }
-
-  // --------
-  // initializeGoogleSignInButton() {
-  //   const tokenClient = google.accounts.oauth2.initCodeClient({
-  //     client_id: clientId,
-  //     scope:
-  //       'openid email profile https://www.googleapis.com/auth/calendar.readonly',
-  //     callback: (tokenResponse: any) => {
-  //       console.log('Access Token:', tokenResponse.access_token);
-  //       console.log('ID Token (JWT):', tokenResponse.id_token); // 👈 ESTE
-  //     },
-  //     response_type: 'id_token token', // 👈 clave para recibir ambos
-  //   });
-
-  //   // Mostrar el botón manualmente o hacer auto-login
-  //   document.getElementById('buttonDiv')?.addEventListener('click', () => {
-  //     tokenClient.requestAccessToken();
-  //   });
-  // }
-
-  // handleAccessToken(tokenResponse: any) {
-  //   // console.log('tokenResponse', tokenResponse);
-  //   // console.log('Access token: ', tokenResponse.access_token);
-  //   if (tokenResponse.access_token) {
-  //     sessionStorage.setItem('jwt_token', tokenResponse.id_token);
-
-  //     sessionStorage.setItem('access_token', tokenResponse.access_token);
-  //     this.router.navigateByUrl('/home');
-  //   }
-  // }
 }

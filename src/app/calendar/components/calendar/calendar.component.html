@@ -1,18 +1,9 @@
 <h2>Eventos</h2>
+
 <ul>
   @for (event of events(); track $index){
-  <li
-    [class.bg-green]="event.eventType === 'holiday'"
-    [class.bg-blue]="event.eventType === 'mine'"
-    [class.bg-violet]="event.eventType === 'other'"
-  >
-    {{ event.summary }}
-    -
-    {{ event.start?.dateTime || event.start?.date }}
-
-    -
-    {{ event.evenType }}
+  <li>
+    {{ event }}
   </li>
-
   }
 </ul>
