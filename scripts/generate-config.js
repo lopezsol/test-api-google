@@ -8,7 +8,14 @@ const config = {
   redirectUriLogin: process.env.REDIRECT_URI_LOGIN || '',
 };
 
-const configPath = path.join(__dirname, '../src/assets/config.json');
+const assetsDir = path.join(__dirname, '../src/assets');
+
+// Crear carpeta si no existe
+if (!fs.existsSync(assetsDir)) {
+  fs.mkdirSync(assetsDir, { recursive: true });
+}
+
+const configPath = path.join(assetsDir, 'config.json');
 
 fs.writeFileSync(configPath, JSON.stringify(config, null, 2));
 console.log(`Config file written to ${configPath}`);
