@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { GoogleCalendarService } from '../../services/google-calendar.service';
+import { Event, GoogleCalendarService } from '../../services/google-calendar.service';
 
 @Component({
   selector: 'calendar',
@@ -8,7 +8,7 @@ import { GoogleCalendarService } from '../../services/google-calendar.service';
   styleUrl: './calendar.component.css',
 })
 export class CalendarComponent {
-  events = signal<string[]>([]);
+  events = signal<Event[]>([]);
   calendarService = inject(GoogleCalendarService);
 
   ngOnInit() {
@@ -17,8 +17,8 @@ export class CalendarComponent {
   fetchEvents() {
     this.calendarService.getEventsCalendar().subscribe({
       next: (resp) => {
-        this.events.set(resp.events);
-        console.log('fetchEvents', resp.events);
+        this.events.set(resp.eventsList);
+        console.log('fetchEvents', resp.eventsList);
       },
       error: (err) => console.error('Error trayendo los eventos:', err),
     });

@@ -3,12 +3,17 @@ import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
+export interface Event {
+  title: string;
+  description: string;
+  dateTime: string;
+}
 export interface CalendarEventsResponse {
   success: boolean;
   message: string;
   userEmail: string;
   eventCount: number;
-  events: string[];
+  eventsList: Event[];
   timestamp: number;
   note: string;
 }
