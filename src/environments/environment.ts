@@ -4,4 +4,5 @@ export const environment = {
   googleApiKey: 'AIzaSyCO5sJ3wfB-VHJIJNvI2bRBuV4SRuHkbhg',
   mobyUrl: 'http://localhost:8080/api',
   redirectUriLogin: 'http://localhost:8080/api/auth/google/callback',
+  // mobyUrl: 'https://cf3f5da9f29c.ngrok-free.app/api',
 };

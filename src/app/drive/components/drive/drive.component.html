@@ -1,4 +1,4 @@
-<h2>Carpetas disponibles</h2>
+<!-- <h2>Carpetas disponibles</h2>
 <ul>
   <li *ngFor="let folder of folders">
     <button (click)="listFilesInFolder(folder.id)">
@@ -19,4 +19,14 @@
 
 <h3>Subir archivo a mi carpeta propia</h3>
 <input type="file" (change)="onFileSelected($event)" />
-<button (click)="uploadSelectedFile()">Subir archivo</button>
+<button (click)="uploadSelectedFile()">Subir archivo</button> -->
+
+<h1>Drive</h1>
+<ul>
+  @for (file of files(); track $index) {
+  <li>
+    {{ file.name }} - {{file.mimeType}} - {{file.modifiedTime}}
+  </li>
+
+  }
+</ul>

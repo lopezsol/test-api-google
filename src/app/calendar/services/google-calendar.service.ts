@@ -17,6 +17,23 @@ export interface CalendarEventsResponse {
   timestamp: number;
   note: string;
 }
+
+export interface Task {
+  title: string;
+  dueDate: string;
+  status: string;
+  note: string;
+}
+export interface TasksResponse {
+  success: boolean;
+  message: string;
+  userEmail: string;
+  taskCount: number;
+  tasksList: Task[];
+  timestamp: number;
+  note: string;
+}
+
 const baseUrl = environment.mobyUrl;
 @Injectable({ providedIn: 'root' })
 export class GoogleCalendarService {
@@ -28,5 +45,11 @@ export class GoogleCalendarService {
       userEmail
     )}`;
     return this.http.get<CalendarEventsResponse>(apiUrl);
+  }
+
+  getTasks(): Observable<TasksResponse> {
+    const userEmail = sessionStorage.getItem('user_email') || '';
+    const apiUrl = `${baseUrl}/auth/tasks/${encodeURIComponent(userEmail)}`;
+    return this.http.get<TasksResponse>(apiUrl);
   }
 }
