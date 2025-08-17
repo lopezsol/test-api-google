@@ -1,5 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
-import { Event, GoogleCalendarService } from '../../services/google-calendar.service';
+import { GoogleCalendarService } from '../../services/google-calendar.service';
+import { CalendarEvent } from '../../interfaces/calendar-event.interface';
+import { EventsResponse } from '../../interfaces/events-response.interface';
 
 @Component({
   selector: 'calendar',
@@ -8,7 +10,7 @@ import { Event, GoogleCalendarService } from '../../services/google-calendar.ser
   styleUrl: './calendar.component.css',
 })
 export class CalendarComponent {
-  events = signal<Event[]>([]);
+  events = signal<CalendarEvent[]>([]);
   calendarService = inject(GoogleCalendarService);
 
   ngOnInit() {

@@ -1,11 +1,11 @@
-import { Event } from "./event-response-complete.interface";
+import type { CalendarEvent } from './calendar-event.interface';
 
 export interface EventsResponse {
   success: boolean;
   message: string;
   userEmail: string;
   eventCount: number;
-  eventsList: Event[];
+  eventsList: CalendarEvent[];
   timestamp: number;
   note: string;
 }
