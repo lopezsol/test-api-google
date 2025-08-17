@@ -23,10 +23,59 @@
 
 <h1>Drive</h1>
 <ul>
-  @for (file of files(); track $index) {
-  <li>
-    {{ file.name }} - {{file.mimeType}} - {{file.modifiedTime}}
-  </li>
+  @for (folder of files(); track $index) { 📁
+  {{
+    folder.name
+  }}
+  -
+  {{
+    folder.modifiedTime
+  }}
+  @if(folder.children?.length) {
+  <ul>
+    @for ( file of folder.children; track $index){
+    <li>📄 {{ file.name }} - {{ file.mimeType }} - {{ file.modifiedTime }}</li>
 
-  }
+    }
+  </ul>
+  } }
 </ul>
+
+
+<div class="drive-upload-container">
+  <h2>Subir archivo a Google Drive</h2>
+
+  <!-- Selector de archivo -->
+  <input type="file" (change)="onFileSelected($event)" />
+
+  <!-- Mostrar archivo seleccionado -->
+  <div *ngIf="selectedFile" class="file-info">
+    <p><strong>Archivo seleccionado:</strong> {{ selectedFile.name }}</p>
+    <p>
+      <strong>Tamaño:</strong> {{ (selectedFile.size / 1024).toFixed(2) }} KB
+    </p>
+  </div>
+
+  <!-- Lista de carpetas -->
+  <div class="folders-list">
+    <h3>Seleccionar carpeta destino:</h3>
+    <ul>
+      <li
+        *ngFor="let folder of files()"
+        (click)="selectFolder(folder.id)"
+        [class.selected]="folder.id === selectedFolderId"
+      >
+        {{ folder.name }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- Botón de subida -->
+  <button
+    class="upload-btn"
+    [disabled]="!selectedFile || !selectedFolderId"
+    (click)="sendFileToBackend()"
+  >
+    Subir archivo
+  </button>
+</div>

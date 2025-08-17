@@ -1,3 +1,88 @@
-:host {
-  display: block;
+.drive-upload-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fefefe;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+input[type="file"] {
+  margin-bottom: 1rem;
+  padding: 8px;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.file-info {
+  margin: 1rem 0;
+  font-size: 0.95rem;
+  color: #555;
+  text-align: left;
+}
+
+.folders-list {
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.folders-list h3 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.folders-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.folders-list li {
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.folders-list li:hover {
+  background-color: #e3f2fd;
+  border-color: #1976d2;
+}
+
+.folders-list li.selected {
+  background-color: #1976d2;
+  color: #fff;
+  border-color: #0d47a1;
+}
+
+.upload-btn {
+  padding: 0.8rem 1.5rem;
+  background-color: #1976d2;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.upload-btn:hover:not(:disabled) {
+  background-color: #0d47a1;
+}
+
+.upload-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
