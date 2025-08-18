@@ -1,7 +1,40 @@
+<section class="min-h-screen flex items-center justify-center">
+  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm text-center border border-gray-300">
+    <div class="flex justify-center mb-4 icon">
+      <span
+        class="inline-flex items-center justify-center h-16 w-16 rounded-full bg-green-100"
+      >
+        <!-- Icono de calendario -->
+        <svg
+          class="h-8 w-8 text-green-800"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+          />
+        </svg>
+      </span>
+    </div>
 
-<h1>Iniciar Sesión</h1>
+    <h2 class="text-xl font-bold text-gray-900 mb-2">Google Services</h2>
+    <p class="text-gray-600 mb-6">
+      Accede a tu calendario, tareas y archivos en un solo lugar
+    </p>
 
-<button class="google-signin-button" (click)="loginWithGoogleOAuth()">
-  <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo" />
-  Iniciar sesión con Google
-</button>
+    <button
+      class="google-signin-button w-full flex items-center justify-center"
+      (click)="loginWithGoogleOAuth()"
+    >
+      <img
+        src="https://developers.google.com/identity/images/g-logo.png"
+        alt="Google logo"
+      />
+      Iniciar sesión con Google
+    </button>
+  </div>
+</section>
