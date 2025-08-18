@@ -1,11 +1,11 @@
 import { Component, inject, signal } from '@angular/core';
 import { GoogleCalendarService } from '../../services/google-calendar.service';
 import { CalendarEvent } from '../../interfaces/calendar-event.interface';
-import { EventsResponse } from '../../interfaces/events-response.interface';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'calendar',
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css',
 })

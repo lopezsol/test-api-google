@@ -1,6 +1,4 @@
 .google-signin-button {
-  display: flex;
-  align-items: center;
   background-color: white;
   border: 1px solid #dadce0;
   border-radius: 4px;
@@ -12,6 +10,9 @@
   box-shadow: 0 2px 4px rgb(0 0 0 / 0.2);
   transition: background-color 0.3s ease;
   user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .google-signin-button:hover {
@@ -21,4 +22,12 @@
 .google-signin-button img {
   height: 18px;
   margin-right: 12px;
+}
+
+section {
+  background-color: #f2faf9;
+}
+
+.icon span {
+  background-color: #e5eded;
 }
