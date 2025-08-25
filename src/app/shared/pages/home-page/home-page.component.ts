@@ -3,10 +3,11 @@ import { CalendarComponent } from '../../../calendar/components/calendar/calenda
 import { TasksComponent } from '../../../calendar/components/tasks/tasks.component';
 import { DriveComponent } from '../../../drive/components/drive/drive.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PaystubSignerComponent } from "../../../paystub/paystub-signer/paystub-signer.component";
 
 @Component({
   selector: 'home-page',
-  imports: [CalendarComponent, TasksComponent, DriveComponent],
+  imports: [CalendarComponent, TasksComponent, DriveComponent, PaystubSignerComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })
