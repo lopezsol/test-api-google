@@ -25,7 +25,7 @@
     </svg>
   </div>
   <p class="text-gray-900 leading-5 mb-8">
-    Firma tu recibo de sueldo del mes de Julio
+    Firmá tu recibo de sueldo del mes de <span class="font-bold">JULIO</span>
   </p>
   <p-button
     (onClick)="sign()"
@@ -38,8 +38,8 @@
   <p-toast />
 </div>
 
-@if(loading){
-<div  class="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+@if(loading()){
+<div class="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
   <p-progress-spinner ariaLabel="loading" />
 </div>
 }

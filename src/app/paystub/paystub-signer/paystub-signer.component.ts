@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { PaystubSignatureService } from '../services/paystub-signature.service';
 import { ButtonModule } from 'primeng/button';
 import { MessageService } from 'primeng/api';
@@ -16,7 +16,7 @@ export class PaystubSignerComponent {
   paystubSignatureService = inject(PaystubSignatureService);
   constructor(private messageService: MessageService) {}
 
-  loading: boolean = false;
+  loading = signal<boolean>(false);
 
   //TODO: esto debería ser dinámico. Se harcodea unicamente para la muestra del spike firmar recibo de sueldo
   pdfFileId = '1Vs-sICz4Z_hy5X8n4IhxnU8lqaS-omCU';
@@ -24,18 +24,18 @@ export class PaystubSignerComponent {
   parentFolderId = '1OyjaxcmOf8bIgbAn00nChC7nfAZc1dKb';
 
   sign() {
-    console.log('me accione');
-    this.loading = true;
+    this.loading.set(true);
 
     this.paystubSignatureService
       .signPaystub(this.pdfFileId, this.signatureFileId, this.parentFolderId)
       .subscribe({
         next: (res) => {
-          this.loading = false;
+          this.loading.set(false);
           this.showSuccess();
         },
         error: (err) => {
-          this.loading = false;
+          this.loading.set(false);
+
           console.error('Error al firmar', err);
           this.showError();
         },
