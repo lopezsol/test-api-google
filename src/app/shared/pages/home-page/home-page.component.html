@@ -1,93 +1,31 @@
-<section class="min-h-screen bg-[#f2faf9] p-8">
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <!-- Calendario -->
-    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-      <div class="flex items-center mb-4">
-        <svg
-          class="h-6 w-6 text-green-800 mr-2"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-          />
-        </svg>
-        <h2 class="text-lg font-bold text-gray-900">Eventos de Calendar</h2>
-      </div>
-      <calendar />
-    </div>
+<div class="container">
+    <header>
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATMAAACkCAMAAADMkjkjAAAAsVBMVEX///8AAAABkcEAib0Ajb8Aj8AAi77n5+dpaWn8/PzY2NigoKAAh7yCgoKbm5ukpKSNjY3q6upLS0usrKwqKirHx8fx8fF7e3u0tLTd3d3Ozs6GhoaQkJAXFxfo8/h1dXUNDQ05OTnAwMBYWFjJ4u5rs9PV6fKgzOF7utdvb29iYmJPp83G4O0kmcWy1ucwMDAfHx/u9/qLwtxaq8+o0OM9oMlCQkIUFBQ4ODhPT08uLi77WJGsAAALDklEQVR4nO2cCVvqOhCGu0NLQZFFRERlFwSR7er9/z/sZt8Ksoi3Suc9z3NOadI0+ZjMTNJyLAsAAAAAAAAAAAAAAAAAAAAAAAAALpR2bzYcLobD2eA97a78CQbDSeC6gUf+uLG/nKXdo1/O+8KJA9+h+EHgOpPlIu1O/Wra/ThwOF68Hg7CtLv0ywlHri8Vc0dtcrbd6/UG7ZS79luZeZ5QzI9H2MIGi2kcx8i5ucFkCLol6CtGFkwH+NTUnfQXi9HSQRPW9+LJIO0+/i7ep9KROW6fnhTObOZR45tA5iFpO54i2VAvfB9xC/RcyDs4bc/fLdksUPUcpdPDX8e7o0pmpGOLWClErg5EI0wVQ/InetnQdXRMTbNJX5XM07PYQeyYxK8p9fMXMVMtyXTy04RkaEWV+cVB6Cv+yl/rhbNAU4umcF7mXdpImZlOYJjZWvX/vj+gwcLN+JKgrfl4V09aQ9WbeU7bGrhgaCgA6JakF/YCGhc8F605J9iNLd3ARydS6epv4V0zM9/RS7E781y/P+y1md9/fx0ugyDu/f89/T0MVW+G/JlRGnjeKLky7/UzPTmNXMLw7qt4uP2yLGcbbSPL9/Qkn+01ogk5Wk7W6+VoBdtB5tRMLAMQvdHUdT3P830UC7Bzy7QvQywNzRx/qZW3F76rV/F9d5rtxZMpGYoCfVk6WMaen6iBvN5yd4sXz7u5aYFd2pRNvnY/TkrK66Tb7zQZBNsUcaej1Wq0dreZGBctu5b2ulUzJAn2+bsVQ2Q3q53t0Gw/fn9/65fJ6Zo5zv7WL5NvaBan3fe0AM2OZ1cMAM120ztds2B/65fJtpz2MMwHBxnidM0ym2tYk68z1y1a+Z4XBG4Qr9LuemoMj3FoXhAH6/5iNXt9fZ1l9w2hwcGTM3Cd0Szjz+gYzkGT03On8JqjYLFru0dVLF6KLe023uZer50s73GbDwS24E6YiQ0WEy8OUAgIggzvn1lbdrdNP8Z2snt9D//OInDj6WTZz/bu9tdRwGdvmw0dFz9Mnyxewa0hll9tx06JRMMg8Fx/lG3jUvli/URfnu1NAz9eixeG2r1VdvNZzs68lry/9750fXfNdrJRFPDjIIb5uWMB5ZF8Yub5nk9tjEeBDC+bJOE2zbw1fqLed/2YTNBw6Ac4CqwXsyynZpJ2kFCN/BSlPQ2otVkL1/MDiAIqg9gQjbwP9Io8GXmOOXOQiU1AMJ2eHjzJ6+zDmErXnqAJyn4fNgBfJhmoP0T0sUDIlQX432GMioiNDUbuOssvniUI18yp+cH0HX/0PPIvMjK6FlhN4xh+gmKA10co3yev7bUdL8A/4hn4Pl0LzBw3cDL7vsEXDFbDFdGlF/hkDbCK6VpgsHY9+EXdlyCpSOI6QvMS57N9lPv3Ifn/gsEy9gNsbhPk4drY6GJnkd3t/0MIV30HS9V2ggA/xBw5C/BjhxH2+30SDcDCAAAAAAAAAAAAAAAAAAAAgDR4nFcRdvl7rYR29Yk+R482b40D7lrNH/XYPYfaP6VfP0PeJnxbM9sO+YF9t696EVV6Oab9HLrg1L6dnzNrdocb6+yr/okq3RzT/kVrZn2Ioy9ooEqVY9q/bM3Cq1J9f/1mqcaOKpXKAfUvW7NjQRfm9tcCzVRAs+NJTbN6VGuqdw7vas27bWNAFWuR5j9UzXJNo/Bg/ohmER1sZIWlOT28pTcPr57p5xsj5tde6Hn76TYSJ4VmETt6KpJm7umngtoAO8c+1TulYrHVIGpLzaJGo6lcEtYK98XrSsTLWOpWaVTI340OvkcDI0NBroEa5tewU2fV7K5jS1oWjeOcN2XKNatKgb3hPeKaPSqFL2j4dXr4jzp+euqaNtfltT8jVbMS+u5kH8eyayEpK4iWQt4eh37jufsncab0Q5rltfvmuS3oHUHc2gYtTbO3xGVsuDV5xwo9U1cuo9wqmhVsu8gveNHabOKyq92aYRMM9Uuq3PbOq5nBjfF5zmp3k1VfVM1Myrz9rrwj1XWMjurEG7Sa5Xqu80gqbdEsJIZdrOXq5aiAj2sVXTMrl8uVsZg5Ar4eX/F0jS6p3zU2tjTzH9UsAZ0MCSsjY/5CsyqXSEZUdkPsrbAC1/x8HVnk4xbN/kXn7kV3sQt5NDSzLDMGtOy5dMIV2cD5NRvf32rOqnp7LxzJE65b458+K81mZcM/RZpmmytU9im1Zo5RaENrvll0ia3GF+oPDM3MSvUHXGmPZlZROcb+jyl1bs3orkpFSkZcUJ0rg91EVS2RYQIvk4VmbAdHhBQ6UWRf66Ja2TbiKfV9umZlIRCnfIhmOjY167Nrxh2OcP4snHMPiwbZVOyK0JFVuWbCJJriREsTsyQUvKfWplBPanZt289GjwtHa5bnF5xZM+5vmB3Yj7zCNf3cotPEVuKZCIoloZni6l94O6zFZzE4m85UqaMg6c/myUrh0Zq1eHg/r2byy2SZrUgOOkKpZ80AMczBjYVmnUTDb6LsTmmtTOeYuVqomZrV7S3rsc9jNStwd3pezWQCudHtjlcomo4JUzd1UccnqkeK5d5wkfHkVTNdQtnUbOsgiwdpFkadCqWR/xnNZDRnqVloVBCaPaj9ErrkE3oqEn+IJnP0CHvkWtJTJXPaaNsgrw/QrCYiNyVdzZ6MMdJTeeMqS9WMBdgr7hKrZFSHaHaqnTFH+0B5Sk+zp4QuzGxudJ9F4cGEjYhYKNOYePWmbrKExNzEF5zgz7BkBfn5Kj3N2MJJ8fNX9Myt0EzJt5hxfeJjlmA0G1LGw2LAaXEz0r89fPu0NCvQow958ZNQkednsozFX7KpwGwuT+PLtRim+WSpmNDspPzsXh2PlapmfLaJGKsIxQ/HvIxvCtHvW9tnYJMNLV43el9CeWN1HaA/WjpgHdDV9lFS1UyM/JN0744vq3C+KNZOGyJSjoctpsqdIhmXFZ/T591jUjNieqoAu9ebcjaamj2kqFldjLs6Hs/5McmylH2N+Xgsl/p8IBtZLvZf8Veg7qJeKTeW+xpVW2zSWdTjbYsBH+pEv9XnJl4OpqaZWERqEKPbsRckBiu3gaviTmQqSktDQ8vPk5rRTbbrZjmsR2S7vbkt19Amek2zOhKADM0e7bn6bf2kZnI3SELvvV0z5WUKcU7xTsQ1fVRyoRXelYicdlIzKxxrbTatbftnuJdd9O2FDbzux1Z9RUuaaDz3pmZk9+b/0szKzbUB2M8sXaCa3RS0wpZynxI/qd68/qxW34RbNUPjlkk9fh7wyIVXH1PJ7VBkuSHp5SafJxc2O6Zm19oIv6/ZZrtmIlhWHuQoq8KHUFv416r9IwpvtPd6uC/UkgCUxcnWsA7ixtozFPxwqnX7UixQV5jnM1p7tCc2sYj7L4pmu2WcKtLbcs2wjznq5RidcquEkXGmQj63QqOCumNRyn88PDznC4ooDVIJT5na/ef84S1fMLcZWPKRyOqjwuO4m29ROdCN6dmmdkedDxFHWko/rfLVS3dc5FeFjft8d3xbyZEOs/HVW6z9Tvf2L/x/MTSWdvdX3Ae2rtMeOf8ZavQLZVuXzT21D6Chxt7LBC2fonLEZubb/vomNXM2P6lPeS8S5aHMSWYWmouFz2+FvD+BJtnj/vomeLHwUBC21sFZxN6XRv82JVWyzf76CUK6AzXPX5dKRXp8tf+qP42a5I73V99G7Vmz1fkZwsgvp8xzzc/a/so7yBXEeyIvp7fypyjXOrXou267noui3IWnZQAAAAAAAAAAAAAAAAAAAAAAAMDF8R+Td7vPmNbK9AAAAABJRU5ErkJggg==" alt="Logo de Moby Digital" class="logo">
+    </header>
+    <main>
+        <h1>¡Hola! 👋</h1>
+        <p>Estamos emocionados de que formes parte de nuestra comunidad. MobyAPP te ayudará a simplificar tus tareas diarias y a conectar con lo que más importa.</p>
+        <button class="btn">Empezar ahora</button>
 
-    <!-- Tareas -->
-    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-      <div class="flex items-center mb-4">
-        <svg
-          class="h-6 w-6 text-green-800 mr-2"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M9 12l2 2l4 -4m5 2a9 9 0 11-18 0a9 9 0 0118 0z"
-          />
-        </svg>
-        <h2 class="text-lg font-bold text-gray-900">Google Tasks</h2>
-      </div>
-      <tasks />
-    </div>
 
-    <!-- Drive -->
-    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-      <div class="flex items-center mb-4">
-        <svg
-          class="h-6 w-6 text-green-800 mr-2"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"
-          />
-        </svg>
-        <h2 class="text-lg font-bold text-gray-900">Google Drive</h2>
-      </div>
-      <drive />
-    </div>
 
-    <!-- Recibos de sueldo -->
-    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-      <div class="flex items-center mb-4">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6 text-green-800 mr-2"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path
-            d="M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z"
-          ></path>
-          <path
-            d="m18 13-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18"
-          ></path>
-          <path d="m2.3 2.3 7.286 7.286"></path>
-          <circle cx="11" cy="11" r="2"></circle>
-        </svg>
-        <h2 class="text-lg font-bold text-gray-900">Recibos de sueldo</h2>
-      </div>
-      <paystub-signer />
-    </div>
-  </div>
-</section>
+
+      </main>
+    <footer>
+        <p>&copy; 2025 Moby Digital. Todos los derechos reservados.</p>
+
+  @for (f of records(); track $index) {
+    <li>
+          <div><strong>{{ f.first_name }} {{ f.last_name }}</strong></div>
+          <div>{{ f.email }}</div>
+          @if (f.technology?.length) {
+          <div>Tech: {{ (f.technology ?? []).join(', ') }}</div>
+          }
+
+    </li>
+  }
+
+    </footer>
+
+</div>
+

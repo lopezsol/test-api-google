@@ -1,3 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 :host {
-  display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #fff;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    padding: 2rem;
+}
+
+.container {
+    max-width: 500px;
+    width: 100%;
+}
+
+.logo {
+    width: 200px;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #00b9e8; /* Turquesa de Mobydigital */
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    background-color: #00b9e8; /* Turquesa de Mobydigital */
+    color: #fff;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #00a0d0; /* Turquesa un poco más oscuro */
+}
+
+footer {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: #999;
 }

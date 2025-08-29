@@ -1,0 +1,47 @@
+.nav{
+  background-color: aliceblue;   /* fondo */
+  color: #000;                   /* texto */
+  font-size: 1.25rem;            /* ~text-lg (grande) */
+  position: sticky; top: 0;      /* opcional: que quede fijo arriba */
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+
+/* “Distancia” general y centrado del contenido */
+.nav__container{
+  max-width: 1200px;
+  margin: 0 auto;                /* centra */
+  padding: 12px 20px;            /* separación interna */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;/* separa izquierda/derecha */
+  gap: 16px;                     /* separación entre elementos */
+}
+
+.brand{
+  font-weight: 700;
+}
+
+/* Contenedor de acciones a la derecha */
+.nav__right{
+  display: flex;
+  align-items: center;
+  gap: 12px;                     /* “distancia” entre saludo y botón */
+}
+
+.btn{
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,.1);
+  background: white;
+  color: #111;
+  cursor: pointer;
+}
+.btn:hover{
+  background: #f2f2f2;
+}
+
+/* opcional: espacio con el contenido siguiente */
+.nav + *{
+  margin-top: 12px;
+}

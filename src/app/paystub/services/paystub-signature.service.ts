@@ -17,7 +17,7 @@ export class PaystubSignatureService {
     signatureFileId: string,
     parentFolderId?: string
   ): Observable<SignatureResponse> {
-    const userEmail = sessionStorage.getItem('user_email') || '';
+
 
     let params = new HttpParams()
       .set('pdfFileId', pdfFileId)
@@ -27,9 +27,7 @@ export class PaystubSignatureService {
       params = params.set('parentFolderId', parentFolderId);
     }
 
-    const apiUrl = `${baseUrl}/pdf/sign-from-drive/${encodeURIComponent(
-      userEmail
-    )}`;
+    const apiUrl = `${baseUrl}/pdf/sign-from-drive`;
 
     return this.http.post<SignatureResponse>(apiUrl, {}, { params });
   }

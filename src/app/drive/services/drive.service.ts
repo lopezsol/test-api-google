@@ -32,18 +32,13 @@ export class DriveService {
   http = inject(HttpClient);
 
   getDriveFiles(): Observable<DriveFilesResponse> {
-    const userEmail = sessionStorage.getItem('user_email') || '';
-    const apiUrl = `${baseUrl}/auth/drive/files/${encodeURIComponent(
-      userEmail
-    )}`;
+
+    const apiUrl = `${baseUrl}/auth/drive/files`;
     return this.http.get<DriveFilesResponse>(apiUrl);
   }
 
   uploadFile(payload: any, id: string): Observable<any> {
-    const userEmail = sessionStorage.getItem('user_email') || '';
-    const apiUrl = `${baseUrl}/auth/drive/upload/${encodeURIComponent(
-      userEmail
-    )}`;
+    const apiUrl = `${baseUrl}/auth/drive/upload`;
     return this.http.post<any>(apiUrl, payload);
   }
 }

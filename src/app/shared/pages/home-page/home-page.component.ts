@@ -1,27 +1,40 @@
-import { Component, computed, inject, signal } from '@angular/core';
-import { CalendarComponent } from '../../../calendar/components/calendar/calendar.component';
-import { TasksComponent } from '../../../calendar/components/tasks/tasks.component';
-import { DriveComponent } from '../../../drive/components/drive/drive.component';
-import { ActivatedRoute, Router } from '@angular/router';
-import { PaystubSignerComponent } from "../../../paystub/paystub-signer/paystub-signer.component";
+import { Component, inject, signal} from '@angular/core';
+import { AirtableFields, AirtableListResponse } from '../../../auth/interfaces/Airtable';
+import { AirtableService } from '../../../services/airtableservice/airtable.service';
 
 @Component({
   selector: 'home-page',
-  imports: [CalendarComponent, TasksComponent, DriveComponent, PaystubSignerComponent],
+  imports: [],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })
 export class HomePageComponent {
-  router = inject(Router);
-  route = inject(ActivatedRoute);
 
-  ngOnInit() {
-    this.route.queryParams.subscribe((params) => {
-      const userEmail = params['user_email'];
-      if (userEmail) {
-        sessionStorage.setItem('user_email', userEmail);
-        this.router.navigate(['/home'], { replaceUrl: true });
+ private api = inject(AirtableService);
+
+  records = signal<AirtableFields[]>([]);
+
+
+  ngOnInit(): void {
+    this.fetchRecords();
+  }
+
+  private fetchRecords(): void {
+
+    this.api.getAirtableRecords().subscribe({
+      next: (res: AirtableListResponse) => {
+        console.log(res);
+        // Mapeamos solo los fields de cada record
+        const mapped = res.records.map(r => r.fields);
+        this.records.set(mapped);
+
+      },
+      error: (err) => {
+        console.error('Error obteniendo registros', err);
+        this.records.set([]);
       }
     });
   }
 }
+
+

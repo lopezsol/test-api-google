@@ -19,6 +19,7 @@ export class CalendarComponent {
   fetchEvents() {
     this.calendarService.getEventsCalendar().subscribe({
       next: (resp) => {
+        console.log(resp);
         this.events.set(resp.eventsList);
         console.log('fetchEvents', resp.eventsList);
       },

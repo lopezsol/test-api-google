@@ -1,8 +1,8 @@
 import { AuthService } from './../../services/auth.service';
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from '../../../../environments/environment';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from '../../../../environments/environment';
 
 const clientId = environment.googleClientId;
 const redirectUri = environment.redirectUriLogin;

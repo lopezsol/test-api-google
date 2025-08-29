@@ -11,16 +11,12 @@ export class GoogleCalendarService {
   http = inject(HttpClient);
 
   getEventsCalendar(): Observable<EventsResponse> {
-    const userEmail = sessionStorage.getItem('user_email') || '';
-    const apiUrl = `${baseUrl}/auth/calendar/events/${encodeURIComponent(
-      userEmail
-    )}`;
+    const apiUrl = `${baseUrl}/auth/calendar/events`;
     return this.http.get<EventsResponse>(apiUrl);
   }
 
   getTasks(): Observable<TasksResponse> {
-    const userEmail = sessionStorage.getItem('user_email') || '';
-    const apiUrl = `${baseUrl}/auth/tasks/${encodeURIComponent(userEmail)}`;
+    const apiUrl = `${baseUrl}/auth/tasks`;
     return this.http.get<TasksResponse>(apiUrl);
   }
 }
