@@ -1,15 +1,18 @@
-<nav class="nav">
-  <div class="nav__container">
-    <span class="brand">Mi App</span>
+<nav class="">
+  <div class="flex justify-between items-center h-14 px-8 bg-white">
+    <span class="font-bold text-xl">MobyApp</span>
 
-    <div class="nav__right">
+    <div class="flex items-center gap-10">
       @if (auth.user$ | async; as user) {
-        <span>Hola, {{ user.name || user.email }}</span>
-        <button type="button" class="btn" (click)="onLogout()">Salir</button>
-        <button type="button" class="btn" (click)="onDashboard()">Mi perfil</button>
+      <span>Hola, {{ user.name || user.email }}</span>
+      <button
+        type="button"
+        class="border border-moby px-6 py-1.5 rounded-xl hover:bg-moby hover:text-white transition-colors duration-300"
+        (click)="onLogout()"
+      >
+        Salir
+      </button>
 
-      } @else {
-        <button type="button" class="btn" (click)="onLogin()">Iniciar sesión</button>
       }
     </div>
   </div>

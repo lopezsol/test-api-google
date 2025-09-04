@@ -1,10 +1,12 @@
 import { Component, inject, signal} from '@angular/core';
 import { AirtableFields, AirtableListResponse } from '../../../auth/interfaces/Airtable';
 import { AirtableService } from '../../../services/airtableservice/airtable.service';
+import { LoginPageComponent } from "../../../auth/pages/login-page/login-page.component";
+import { LoginButtonComponent } from "../../../auth/components/login-button/login-button.component";
 
 @Component({
   selector: 'home-page',
-  imports: [],
+  imports: [LoginPageComponent, LoginButtonComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })
@@ -16,7 +18,7 @@ export class HomePageComponent {
 
 
   ngOnInit(): void {
-    this.fetchRecords();
+    // this.fetchRecords();
   }
 
   private fetchRecords(): void {

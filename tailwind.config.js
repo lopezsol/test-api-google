@@ -2,9 +2,18 @@
 const PrimeUI = require("tailwindcss-primeui");
 
 module.exports = {
-  content: ["./src/**/*.{html,ts}"],
+  content: [
+    "./src/**/*.{html,ts}", // asegura que Tailwind escanee tus templates Angular
+  ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#0191C1",
+        moby: "#00527F", 
+        base: "#F5F5F5"
+
+      },
+    },
   },
-  plugins: [PrimeUI],
+  plugins: [],
 };

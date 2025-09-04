@@ -7,26 +7,24 @@ import { AsyncPipe } from '@angular/common';
   selector: 'app-nav-page',
   imports: [AsyncPipe],
   templateUrl: './nav-page.component.html',
-  styleUrl: './nav-page.component.css'
+  styleUrl: './nav-page.component.css',
 })
 export class NavPageComponent {
- auth = inject(AuthService);
+  auth = inject(AuthService);
   router = inject(Router);
   route = inject(ActivatedRoute);
 
-
   ngOnInit() {
-    this.auth.getMe()
-    .subscribe();
+    this.auth.getMe().subscribe();
   }
   onLogout() {
     // Elegí hard:true si querés que el back invalide la sesión y borre la cookie
     this.auth.logout({ hard: true }).subscribe();
   }
-   onDashboard() {
+  onDashboard() {
     this.router.navigate(['/dashboard']);
   }
-  onLogin()  {
+  onLogin() {
     this.router.navigate(['/login']);
   }
 }

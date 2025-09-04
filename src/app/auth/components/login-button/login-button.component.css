@@ -1,8 +1,8 @@
 .google-signin-button {
   background-color: white;
   border: 1px solid #dadce0;
-  border-radius: 4px;
-  padding: 10px 15px;
+  border-radius: 8px;
+  padding: 16px 65px;
   font-size: 16px;
   font-weight: 500;
   color: #3c4043;
@@ -22,8 +22,4 @@
 .google-signin-button img {
   height: 18px;
   margin-right: 12px;
-}
-
-.icon span {
-  background-color: #e5eded;
 }
