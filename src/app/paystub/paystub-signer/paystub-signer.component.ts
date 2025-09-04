@@ -45,7 +45,7 @@ export class PaystubSignerComponent {
   showSuccess() {
     this.messageService.add({
       severity: 'success',
-      summary: 'Success',
+      summary: '¡Éxito!',
       detail: 'Recibo de sueldo firmado con éxito.',
     });
   }
@@ -53,7 +53,7 @@ export class PaystubSignerComponent {
   showError() {
     this.messageService.add({
       severity: 'error',
-      summary: 'Error',
+      summary: '¡Error!',
       detail: 'No se pudo firmar el recibo de sueldo.',
     });
   }
