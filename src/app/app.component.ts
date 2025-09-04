@@ -1,11 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import { NavPageComponent } from "./shared/pages/nav-page/nav-page/nav-page.component";
 import { AuthService } from './auth/services/auth.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavPageComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
