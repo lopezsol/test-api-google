@@ -49,7 +49,7 @@ export class AuthService {
         // 2) Limpiar UI local
         this._user$.next(null);
         this.user.set(null);
-        this.router.navigate(['/login']);
+        this.router.navigate(['/home']);
       }),
       map(() => void 0),
       catchError(() => {
@@ -61,7 +61,7 @@ export class AuthService {
         this._user$.next(null);
         this.user.set(null);
 
-        this.router.navigate(['/login']);
+        this.router.navigate(['/home']);
         return of(void 0);
       })
     );
