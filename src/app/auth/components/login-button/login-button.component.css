@@ -1,11 +1,11 @@
 .google-signin-button {
-  background-color: white;
+  background-color: #FAFAFA;
   border: 1px solid #dadce0;
   border-radius: 8px;
   padding: 16px 65px;
   font-size: 16px;
   font-weight: 500;
-  color: #3c4043;
+  color: #0F1723;
   cursor: pointer;
   box-shadow: 0 2px 4px rgb(0 0 0 / 0.2);
   transition: background-color 0.3s ease;

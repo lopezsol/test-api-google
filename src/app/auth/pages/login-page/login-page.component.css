@@ -1,29 +1,9 @@
-.google-signin-button {
-  background-color: white;
-  border: 1px solid #dadce0;
-  border-radius: 4px;
-  padding: 10px 15px;
-  font-size: 16px;
-  font-weight: 500;
-  color: #3c4043;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgb(0 0 0 / 0.2);
-  transition: background-color 0.3s ease;
-  user-select: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.google-signin-button:hover {
-  background-color: #f7f8f8;
-}
-
-.google-signin-button img {
-  height: 18px;
-  margin-right: 12px;
-}
-
-.icon span {
-  background-color: #e5eded;
+.login {
+  opacity: 0.83;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 253, 244, 0) -3.63%,
+    rgba(0, 82, 127, 0.67) 72.1%,
+    #003552 100%
+  );
 }

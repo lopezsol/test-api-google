@@ -22,6 +22,8 @@ export class AppComponent implements OnInit{
       try { msg = JSON.parse(ev.newValue); } catch {}
       localStorage.removeItem('auth_event'); // limpiar una vez leído
 
+      console.log(msg.type)
+
       if (msg.type === 'LOGOUT') {
         this.authService.clearLocalStateAndRedirect('LOGOUT');
         return;
