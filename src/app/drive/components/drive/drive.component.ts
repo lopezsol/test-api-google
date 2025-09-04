@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { DriveService, FileDrive } from '../../services/drive.service';
 
 @Component({
@@ -11,7 +11,9 @@ import { DriveService, FileDrive } from '../../services/drive.service';
 export class DriveComponent implements OnInit {
   accessToken = sessionStorage.getItem('access_token');
 
-  files = signal<FileDrive[]>([]);
+  filesList = signal<FileDrive[]>([]);
+  files = computed(()=> this.filesList().filter(file => file.type.includes('folder')))
+
   selectedFile: File | null = null;
   selectedFolderId: string | null = null;
   viewingFolderId: string | null = null;
@@ -25,7 +27,7 @@ export class DriveComponent implements OnInit {
   fetchDriveFiles() {
     this.driveService.getDriveFiles().subscribe({
       next: (resp) => {
-        this.files.set(resp.filesList);
+        this.filesList.set(resp.filesList);
         console.log('fetchDriveFiles', resp.filesList);
       },
       error: (err) => console.error('Error trayendo los archivos:', err),
