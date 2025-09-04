@@ -9,9 +9,9 @@ module.exports = {
     extend: {
       colors: {
         primary: "#0191C1",
-        moby: "#00527F", 
-        base: "#F5F5F5"
-
+        moby: "#00527F",
+        mobyhover: "#004466",
+        base: "#F5F5F5",
       },
     },
   },
